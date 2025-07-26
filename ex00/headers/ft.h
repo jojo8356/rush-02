@@ -24,3 +24,4 @@ t_dict	*ft_create_elem(long long key, void *value);
 int	ft_strlen(char *str);
 char	*ft_strcat(char *dest, char *src);
 char *convert_nb(t_dict *numbers, int nb);
+char	*ft_strdup(char *src);
