@@ -1,33 +1,26 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: johan <johan@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/26 07:16:37 by johan             #+#    #+#             */
-/*   Updated: 2025/07/26 07:50:45 by johan            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <unistd.h>
 #include <stdlib.h>
+#include <stddef.h>
 #include <fcntl.h>
-#include <stdlib.h>
+#include <unistd.h>
 
 typedef struct s_dict {
-    char *key;
-    char *value;
-    struct s_dict *next;
+	struct s_dict *next;
+	long long int key;
+	char *value;
 } t_dict;
 
-char *ft_strtrim(char *s);
-char *ft_strdup(const char *s);
-char *ft_strcat_malloc(char *a, char *b);
-t_dict *parse_dict(char *path);
-void free_dict(t_dict *dict);
-int convert_number(char *num, t_dict *dict);
-int	ft_strlen(const char *str);
+char	**ft_split(char *str, char *charset, int *len);
+void	ft_putchar(char c);
 void	ft_putstr(char *str);
+void	ft_dict_push_back(t_dict **begin_dict, long long int key, void *value);
+void print_dict(t_dict *dict);
+t_dict *format_all(const char *filename);
+char	*get_content_file(const char *filename);
+int	ft_atoi(char *str);
+char	*ft_strjoin(int size, char **strs, char *sep);
+char *get_value(t_dict *begin_dict, long long key);
+char	*ft_strcat_malloc(char *a, char *b);
+t_dict	*ft_create_elem(long long key, void *value);
+int	ft_strlen(char *str);
 char	*ft_strcat(char *dest, char *src);
-int	ft_strcmp(const char *s1, const char *s2);
+char *convert_nb(t_dict *numbers, int nb);

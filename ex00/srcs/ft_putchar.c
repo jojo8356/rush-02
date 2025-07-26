@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johan <johan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpolsine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/26 07:35:31 by johan             #+#    #+#             */
-/*   Updated: 2025/07/26 07:36:04 by johan            ###   ########.fr       */
+/*   Created: 2025/07/09 14:42:24 by jpolsine          #+#    #+#             */
+/*   Updated: 2025/07/13 17:01:06 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include <unistd.h>
 
-char	*ft_strdup(const char *s)
+void	ft_putchar(char c)
 {
-	int		len;
-	char	*copy;
-
-	len = ft_strlen(s);
-	copy = malloc(len + 1);
-	if (!copy)
-		return (NULL);
-	for (int i = 0; i < len; i++)
-		copy[i] = s[i];
-	copy[len] = '\0';
-	return (copy);
+	write(1, &c, 1);
 }
