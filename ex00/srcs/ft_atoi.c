@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpolsine <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 08:45:59 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/16 09:58:54 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 11:43:17 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft.h"
 
 int	is_space(char str)
 {
@@ -27,11 +29,6 @@ int	count_less(char *str, int *i)
 		(*i)++;
 	}
 	return (less);
-}
-
-int	is_digit(char str)
-{
-	return ('0' <= str && str <= '9');
 }
 
 int	ft_atoi(char *str)

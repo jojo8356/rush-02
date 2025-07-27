@@ -6,7 +6,7 @@
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:40:39 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/27 10:56:58 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 11:39:43 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ char	**get_elements_by_line(char *line)
 	return (ft_split(line, ": ", &len_elements));
 }
 
-char	**get_lines(const char *filename)
+char	**get_lines(const char *filename, int *len_line)
 {
 	char	*content;
 
 	content = get_content_file(filename);
-	return (ft_split(content, "\n", &len_line));
+	return (ft_split(content, "\n", len_line));
 }
 
 t_dict	*format_all(const char *filename)
@@ -82,7 +82,7 @@ t_dict	*format_all(const char *filename)
 	char	**elements;
 	t_dict	*result;
 
-	lines = get_lines(filename);
+	lines = get_lines(filename, &len_line);
 	i = 0;
 	while (i < len_line - 1)
 	{

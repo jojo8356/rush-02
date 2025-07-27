@@ -6,7 +6,7 @@
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 09:48:43 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/27 10:49:53 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 11:47:51 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,6 @@ char	*ft_strdup(char *src);
 int		len_int(int n);
 int		count_p_1000(int nb);
 int		ft_rec_pow(int nb, int power);
+int		contain(char *str, char c);
+int		str_is_digit(char *str);
+int		is_digit(char str);
