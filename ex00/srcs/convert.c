@@ -3,70 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   convert.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johan <johan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:18:46 by johan             #+#    #+#             */
-/*   Updated: 2025/07/26 18:25:13 by johan            ###   ########.fr       */
+/*   Updated: 2025/07/27 10:50:11 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int	ft_recursive_power(int nb, int power)
+void	convert_nb_less_100(int nb, char **result, t_dict *numbers, int *i)
 {
-	if (power == 0)
-		return (1);
-	else if (power < 0)
-		return (0);
-	return (nb * ft_recursive_power(nb, power - 1));
-}
+	char	*tmp2;
 
-int len_int(int n)
-{
-	int len;
-
-	len = 0;
-	while (n >= 1)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
-void convert_nb_less_1000(int nb, char **result, t_dict *numbers, int *i)
-{
-	char *tmp;
-	if (nb == 0)
-		return ;
-
-	if (nb >= 100)
-	{
-		tmp = get_value(numbers, nb / 100);
-		tmp = ft_strcat_malloc(tmp, " hundred");
-		nb = nb % 100;
-		if (nb > 0)
-		{
-			if (nb <= 20)
-			{
-				result[*i] = get_value(numbers, nb);
-				(*i)++;
-			}
-			else
-			{
-				result[*i] = get_value(numbers, (nb / 10) * 10); // Pour avoir 20, 30, 40, etc.
-				if (nb % 10 != 0)
-				{
-					result[*i] = ft_strcat_malloc(result[*i], "-");
-					result[*i] = ft_strcat_malloc(result[*i], get_value(numbers, nb % 10));
-				}
-				(*i)++;
-			}
-		}
-		result[*i] = tmp;
-		(*i)++;
-	}
-	else if (nb > 0)
+	if (nb > 0)
 	{
 		if (nb <= 20)
 		{
@@ -79,63 +29,82 @@ void convert_nb_less_1000(int nb, char **result, t_dict *numbers, int *i)
 			if (nb % 10 != 0)
 			{
 				result[*i] = ft_strcat_malloc(result[*i], "-");
-				result[*i] = ft_strcat_malloc(result[*i], get_value(numbers, nb % 10));
+				tmp2 = get_value(numbers, nb % 10);
+				result[*i] = ft_strcat_malloc(result[*i], tmp2);
 			}
 			(*i)++;
 		}
 	}
 }
 
-char *convert_nb(t_dict *numbers, int nb)
+void	convert_nb_less_1000(int nb, char **result, t_dict *numbers, int *i)
 {
-	char **result;
-	char **final_result;
-	int i;
-	int temp_nb = nb;
-	int group_count = 0;
+	char	*tmp;
 
 	if (nb == 0)
-		return get_value(numbers, 0);
-
-	// Compter le nombre de groupes de 3 chiffres
-	while (temp_nb > 0)
+		return ;
+	if (nb >= 100)
 	{
-		group_count++;
-		temp_nb /= 1000;
+		tmp = get_value(numbers, nb / 100);
+		tmp = ft_strcat_malloc(tmp, " hundred");
+		nb = nb % 100;
+		if (nb > 0)
+			tmp = ft_strcat_malloc(tmp, " and");
+		convert_nb_less_100(nb, result, numbers, i);
+		result[*i] = tmp;
+		(*i)++;
 	}
+	else
+		convert_nb_less_100(nb, result, numbers, i);
+}
 
-	result = malloc(group_count * 2 * sizeof(char *));
-	i = 0;
-	temp_nb = nb;
-	int power = 0;
-	
-	while (temp_nb > 0)
+void	main_loop(int nb, int *i, t_dict *numbers, char **result)
+{
+	int	current_group;
+	int	power;
+
+	power = 0;
+	current_group = 0;
+	while (nb > 0)
 	{
-		int current_group = temp_nb % 1000;
+		current_group = nb % 1000;
 		if (current_group > 0)
 		{
 			if (power > 0)
 			{
-				result[i] = get_value(numbers, (int)ft_recursive_power(1000, power));
-				i++;
+				result[*i] = get_value(numbers, (int)ft_rec_pow(1000, power));
+				result[*i] = ft_strcat_malloc(result[*i], ",");
+				(*i)++;
 			}
-			convert_nb_less_1000(current_group, result, numbers, &i);
+			convert_nb_less_1000(current_group, result, numbers, i);
 		}
-		temp_nb /= 1000;
+		nb /= 1000;
 		power++;
 	}
+}
 
-	// Inverser l'ordre des éléments
+char	*convert_nb(t_dict *numbers, int nb)
+{
+	char	**result;
+	char	**final_result;
+	char	*final_string;
+	int		i;
+	int		j;
+
+	j = 0;
+	if (nb == 0)
+		return (get_value(numbers, 0));
+	result = malloc(count_p_1000(nb) * 2 * sizeof(char *));
+	i = 0;
+	main_loop(nb, &i, numbers, result);
 	final_result = malloc(i * sizeof(char *));
-	for (int j = 0; j < i; j++)
+	while (j < i)
 	{
 		final_result[j] = result[i - 1 - j];
+		j++;
 	}
-	
-	char *final_string = ft_strjoin(i, final_result, " ");
-	
+	final_string = ft_strjoin(i, final_result, " ");
 	free(result);
 	free(final_result);
-	
-	return final_string;
+	return (final_string);
 }

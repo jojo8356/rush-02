@@ -1,52 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict.c                                             :+:      :+:    :+:   */
+/*   dict2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:40:15 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/27 10:46:12 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 10:58:26 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-t_dict	*ft_create_elem(long long key, void *value)
+void	ft_dict_clear(t_dict *begin_dict, void (*free_fct)())
 {
-	t_dict	*element;
+	t_dict	*current;
+	t_dict	*next;
 
-	element = malloc(sizeof(t_dict));
-	if (element == NULL)
-		return (NULL);
-	element->key = (long long int)key;
-	element->value = value;
-	element->next = NULL;
-	return (element);
+	current = begin_dict;
+	while (current)
+	{
+		next = current->next;
+		if (free_fct)
+		{
+			free_fct((long long int)current->key);
+			free_fct(current->value);
+		}
+		free(current);
+		current = next;
+	}
 }
 
-int	ft_dict_size(t_dict *begin_dict)
+void	print_dict(t_dict *dict)
 {
-	if (begin_dict == NULL)
-		return (0);
-	return (1 + ft_dict_size(begin_dict->next));
+	while (dict)
+	{
+		ft_putstr("key: ");
+		ft_putstr((char *)dict->key);
+		ft_putstr(", value: ");
+		ft_putstr((char *)dict->value);
+		ft_putstr(" -> ");
+		dict = dict->next;
+	}
+	ft_putstr("NULL\n");
 }
 
-void	ft_dict_push_back(t_dict **begin_dict, long long int key, void *value)
+char	*get_value(t_dict *begin_dict, long long int key)
 {
-	t_dict	*element;
 	t_dict	*current;
 
-	element = ft_create_elem(key, value);
-	if (!element)
-		return ;
-	if (*begin_dict == NULL)
-	{
-		*begin_dict = element;
-		return ;
-	}
-	current = *begin_dict;
+	current = begin_dict;
 	while (current->next != NULL)
+	{
+		if (current->key == key)
+			return (current->value);
 		current = current->next;
-	current->next = element;
+	}
+	return (NULL);
 }

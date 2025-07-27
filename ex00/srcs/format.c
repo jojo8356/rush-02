@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   format.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/27 10:40:39 by jpolsine          #+#    #+#             */
+/*   Updated: 2025/07/27 10:56:58 by jpolsine         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft.h"
 
 ssize_t	count_bytes(const char *filename)
@@ -26,9 +38,9 @@ ssize_t	count_bytes(const char *filename)
 
 char	*get_content_file(const char *filename)
 {
-	int     size;
-	char    *result;
-	int     i;
+	int		size;
+	char	*result;
+	int		i;
 	char	buffer;
 	int		fd;
 
@@ -37,7 +49,7 @@ char	*get_content_file(const char *filename)
 	result = malloc(size * sizeof(char));
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return NULL;
+		return (NULL);
 	while (read(fd, &buffer, 1) != 0)
 	{
 		result[i] = buffer;
@@ -46,28 +58,40 @@ char	*get_content_file(const char *filename)
 	return (result);
 }
 
-t_dict *format_all(const char *filename)
+char	**get_elements_by_line(char *line)
+{
+	int	len_elements;
+
+	len_elements = 2;
+	return (ft_split(line, ": ", &len_elements));
+}
+
+char	**get_lines(const char *filename)
 {
 	char	*content;
+
+	content = get_content_file(filename);
+	return (ft_split(content, "\n", &len_line));
+}
+
+t_dict	*format_all(const char *filename)
+{
 	int		i;
 	char	**lines;
 	int		len_line;
 	char	**elements;
 	t_dict	*result;
-	int len_elements;
 
+	lines = get_lines(filename);
 	i = 0;
-	content = get_content_file(filename);
-	lines = ft_split(content, "\n", &len_line);
 	while (i < len_line - 1)
 	{
-		elements = ft_split(lines[i], ": ", &len_elements);
+		elements = get_elements_by_line(lines[i]);
 		if (i == 0)
 			result = ft_create_elem((int)ft_atoi(elements[0]), elements[1]);
 		else
 			ft_dict_push_back(&result, (int)ft_atoi(elements[0]), elements[1]);
 		i++;
 	}
-
 	return (result);
 }
