@@ -6,12 +6,11 @@
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:42:47 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/27 11:55:00 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 17:56:36 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-#include <stdio.h>
 
 int	verif_argc(int argc)
 {
@@ -49,6 +48,7 @@ int	main(int argc, char **argv)
 	numbers = format_all("numbers.dict");
 	verif_numbers(numbers);
 	text = convert_nb(numbers, number);
+	ft_dict_clear(numbers, NULL);
 	if (text)
 	{
 		ft_putstr(text);

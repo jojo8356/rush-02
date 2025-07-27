@@ -6,7 +6,7 @@
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:40:15 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/27 10:46:12 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 17:54:31 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@ t_dict	*ft_create_elem(long long key, void *value)
 	element->value = value;
 	element->next = NULL;
 	return (element);
-}
-
-int	ft_dict_size(t_dict *begin_dict)
-{
-	if (begin_dict == NULL)
-		return (0);
-	return (1 + ft_dict_size(begin_dict->next));
 }
 
 void	ft_dict_push_back(t_dict **begin_dict, long long int key, void *value)

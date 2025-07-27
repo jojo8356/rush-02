@@ -6,12 +6,11 @@
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:44:20 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/27 16:09:47 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 17:58:09 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-#include <stdio.h>
 
 int	is_digit(char str)
 {

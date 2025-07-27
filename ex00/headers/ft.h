@@ -6,7 +6,7 @@
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 09:48:43 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/27 16:14:22 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 17:55:40 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	**ft_split(char *str, char *charset, int *len);
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_dict_push_back(t_dict **begin_dict, long long int key, void *value);
-void	print_dict(t_dict *dict);
 t_dict	*format_all(const char *filename);
 char	*get_content_file(const char *filename);
 int		ft_atoi(char *str);
