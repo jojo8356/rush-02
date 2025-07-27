@@ -6,7 +6,7 @@
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 09:48:43 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/27 11:47:51 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 16:14:22 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ t_dict	*ft_create_elem(long long key, void *value);
 int		ft_strlen(char *str);
 char	*ft_strcat(char *dest, char *src);
 char	*convert_nb(t_dict *numbers, int nb);
-char	*ft_strdup(char *src);
-int		len_int(int n);
 int		count_p_1000(int nb);
 int		ft_rec_pow(int nb, int power);
-int		contain(char *str, char c);
 int		str_is_digit(char *str);
 int		is_digit(char str);

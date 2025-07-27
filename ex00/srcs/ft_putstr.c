@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpolsine <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 09:44:47 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/18 09:27:20 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 16:14:49 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ft.h"
 
 void	ft_putstr(char *str)
@@ -22,16 +23,3 @@ void	ft_putstr(char *str)
 		i++;
 	}
 }
-/*
-#include <stdio.h>
-
-int main(void)
-{
-    ft_putstr("Hello World");
-    ft_putchar('\n');
-
-    ft_putstr("42");
-    ft_putchar('\n');
-
-    return 0;
-}*/

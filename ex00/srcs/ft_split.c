@@ -6,7 +6,7 @@
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 10:16:33 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/26 09:55:07 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 16:12:18 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,40 +87,3 @@ char	**ft_split(char *str, char *charset, int *len)
 	result[j] = NULL;
 	return (result);
 }
-
-/*
-#include <stdio.h>
-
-void print_split(char **split)
-{
-	int i;
-
-	i = 0;
-	while (split && split[i])
-	{
-		printf("split[%d] = %s\n", i, split[i]);
-		i++;
-	}
-	printf("\n");
-}
-
-
-int main(void)
-{
-	char **result;
-
-	result = ft_split("hello+world+test", "+");
-	print_split(result);
-
-	result = ft_split("42-school-is-cool", "-");
-	print_split(result);
-
-	result = ft_split("no_delimiter", ",");
-	print_split(result);
-
-	result = ft_split("", "+");
-	print_split(result);
-
-	return 0;
-}
-*/

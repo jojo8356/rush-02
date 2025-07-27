@@ -6,7 +6,7 @@
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:44:20 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/27 11:57:58 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 16:09:47 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,4 @@ int	str_is_digit(char *str)
 		i++;
 	}
 	return (1);
-}
-
-int	contain(char *str, char c)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
 }

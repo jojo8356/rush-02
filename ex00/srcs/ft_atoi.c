@@ -6,7 +6,7 @@
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 08:45:59 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/27 11:43:17 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 16:08:45 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,3 @@ int	ft_atoi(char *str)
 	}
 	return (result * less);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-	printf("%d", ft_atoi("  ---+--+1234ab567"));
-}
-*/

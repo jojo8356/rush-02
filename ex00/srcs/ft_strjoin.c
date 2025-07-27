@@ -6,7 +6,7 @@
 /*   By: jpolsine <jpolsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 14:39:28 by jpolsine          #+#    #+#             */
-/*   Updated: 2025/07/26 11:27:21 by jpolsine         ###   ########.fr       */
+/*   Updated: 2025/07/27 16:09:11 by jpolsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,3 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	}
 	return (result);
 }
-
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char *words1[] = {"Hello", "world", "!"};
-	char *words2[] = {"42", "Nice"};
-	char *words3[] = {"Un", "Deux"};
-	char *words4[] = {};
-	char *sep = " ";
-
-	printf("Test 1 : %s\n", ft_strjoin(3, words1, sep));
-	printf("Test 2 : %s\n", ft_strjoin(2, words2, "-"));
-	printf("Test 3 : %s\n", ft_strjoin(2, words3, ">>>"));
-	printf("Test 4 : %s\n", ft_strjoin(0, words4, "abc"));
-
-	return (0);
-}
-*/
